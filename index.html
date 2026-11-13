@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RouteWise | Smart Route Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">GRAPH-BASED PATH OPTIMIZATION</p>
+      <h1>Route<span>Wise</span></h1>
+    </div>
+    <div class="status"><span class="status-dot"></span> LOCAL NETWORK</div>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <div class="section-heading">
+        <div><p class="eyebrow">PLAN A JOURNEY</p><h2>Find a route</h2></div>
+      </div>
+
+      <label for="source">Starting location</label>
+      <select id="source"></select>
+
+      <label for="destination">Destination</label>
+      <select id="destination"></select>
+
+      <label for="algorithm">Algorithm</label>
+      <select id="algorithm">
+        <option value="dijkstra">Dijkstra (shortest distance)</option>
+        <option value="bfs">BFS (fewest roads)</option>
+      </select>
+
+      <button id="findRoute" class="primary">Find route <span>→</span></button>
+      <div id="routeResult" class="result empty">Choose two locations to begin.</div>
+
+      <hr>
+      <p class="eyebrow">MANAGE YOUR MAP</p>
+      <h3>Add a location</h3>
+      <form id="locationForm">
+        <input id="locationName" placeholder="e.g. Sports Complex" required maxlength="63">
+        <div class="two-inputs">
+          <input id="locationX" type="number" min="20" max="580" placeholder="Map X" required>
+          <input id="locationY" type="number" min="20" max="320" placeholder="Map Y" required>
+        </div>
+        <small>Coordinates: X 20–580, Y 20–320. Pick a clear spot on the map.</small>
+        <button class="secondary" type="submit">+ Add location</button>
+      </form>
+
+      <hr>
+      <h3>Add a road</h3>
+      <form id="roadForm">
+        <select id="roadFrom" required></select>
+        <select id="roadTo" required></select>
+        <input id="roadDistance" type="number" min="1" placeholder="Distance (km)" required>
+        <button class="secondary" type="submit">+ Add road</button>
+      </form>
+    </section>
+
+    <section class="main-column">
+      <section class="panel map-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">LIVE GRAPH VIEW</p><h2>Campus map</h2></div>
+          <button id="refreshMap" class="quiet">Refresh map ↻</button>
+        </div>
+        <div class="map-wrap">
+          <svg id="map" viewBox="0 0 600 340" role="img" aria-label="Map of locations connected by roads"></svg>
+        </div>
+        <div class="legend">
+          <span><i class="dot location-dot"></i> Location</span>
+          <span><i class="line road-line"></i> Open road</span>
+          <span><i class="line route-line"></i> Selected route</span>
+          <span><i class="line blocked-line"></i> Blocked road</span>
+        </div>
+      </section>
+
+      <section class="panel roads-panel">
+        <div class="section-heading"><div><p class="eyebrow">NETWORK CONTROLS</p><h2>Road status</h2></div></div>
+        <div id="roadList" class="road-list"></div>
+      </section>
+
+      <section class="panel history-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">RECENT ACTIVITY</p><h2>Route history</h2></div>
+          <button id="clearHistory" class="quiet danger-text">Clear history</button>
+        </div>
+        <div id="historyList" class="history-list">No searches yet.</div>
+      </section>
+    </section>
+  </main>
+
+  <footer>RouteWise · C backend · Graphs · BFS · Dijkstra · CSV storage</footer>
+  <script src="script.js"></script>
+</body>
+</html>

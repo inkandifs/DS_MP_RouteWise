@@ -1,0 +1,8 @@
+Gate,Canteen,2,0
+Gate,Lab,5,0
+Canteen,Library,3,0
+Lab,Library,1,0
+Canteen,Lab,1,0
+Library,Auditorium,2,0
+Lab,Auditorium,4,0
+Gate,Auditorium,10,0

@@ -1,0 +1,2 @@
+source,destination,algorithm,distance,path
+Canteen,Lab,dijkstra,1,Canteen -> Lab
